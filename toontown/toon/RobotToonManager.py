@@ -2892,6 +2892,14 @@ class RobotToonControlPanel(AppShell):
                        helpMessage='Stop look around task',
                        statusMessage='Look around stop',
                        command=self.stopToonLookAround)
+        self.buttonAdd('Start Blink',
+                       helpMessage='Start blinking task',
+                       statusMessage='Blinking start',
+                       command=self.startToonBlink)
+        self.buttonAdd('Stop Blink',
+                       helpMessage='Stop blinking task',
+                       statusMessage='Blinking stop',
+                       command=self.stopToonBlink)
         self.buttonAdd('Toggle Sky',
                        helpMessage='Toggle Sky visibility',
                        statusMessage='Somewhere over the rainbow!',
@@ -2975,6 +2983,14 @@ class RobotToonControlPanel(AppShell):
     def stopToonLookAround(self):
         if self.rtm.selectedToon:
             self.rtm.selectedToon.stopLookAround()
+
+    def startToonBlink(self):
+        if self.rtm.selectedToon:
+            self.rtm.selectedToon.startBlink()
+
+    def stopToonBlink(self):
+        if self.rtm.selectedToon:
+            self.rtm.selectedToon.stopBlink()
 
     def renderMovie(self):
         duration = askfloat('Render duration', 'Type duration of animation in sec.\n',

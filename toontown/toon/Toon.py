@@ -3112,7 +3112,10 @@ class Toon(Avatar.Avatar, ToonHead):
         if self.isDisguised:
             self.takeOffSuit()
 
-        if not launcher.getPhaseComplete(5):
+        from direct.showbase import ShowBase
+        if base.__class__ != ShowBase.ShowBase and not launcher.getPhaseComplete(5):
+            # First part is so it works with RobotToon if ran outside the game
+
             # If we haven't downloaded phase 5 yet, don't attempt to
             # wear a suit; that will just crash the client.  This
             # should only be possible if someone is hacking us to wear

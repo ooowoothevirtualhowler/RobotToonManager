@@ -2742,7 +2742,7 @@ class RobotToonControlPanel(AppShell):
 
     def setToonName(self, event = None):
         if self.rtm.selectedToon:
-            self.rtm.selectedToon.nametag.setName(self.toonName.get())
+            self.rtm.selectedToon.setName(self.toonName.get())
     
     def setRandomToonName(self):
         if self.rtm.selectedToon:
@@ -2752,16 +2752,16 @@ class RobotToonControlPanel(AppShell):
             else:
                 boy = 0
                 girl = 1
-            self.rtm.selectedToon.nametag.setName(
+            self.rtm.selectedToon.setName(
                 namegen.randomNameMoreinfo(boy = boy, girl = girl)[-1])
     
     def clearToonName(self):
         if self.rtm.selectedToon:
-            self.rtm.selectedToon.nametag.setName('')
+            self.rtm.selectedToon.setName('')
 
     def setToonChat(self, text):
         if self.rtm.selectedToon:
-            self.rtm.selectedToon.nametag.setChat(text, CFSpeech)
+            self.rtm.selectedToon.setChatAbsolute(text, CFSpeech)
 
     def openToonChat(self):
         text = askstring('Open Chat String', 'Phrase:',
@@ -2770,7 +2770,7 @@ class RobotToonControlPanel(AppShell):
 
     def clearToonChat(self):
         if self.rtm.selectedToon:
-            self.rtm.selectedToon.nametag.clearChat()
+            self.rtm.selectedToon.clearChat()
 
     def setToonAnim(self, anim):
         self.anim.set(anim)

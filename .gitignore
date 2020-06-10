@@ -1,0 +1,8 @@
+*.pyc
+*.pyo
+
+# PyCharm
+/.idea
+
+# Visual Studio
+/.vs

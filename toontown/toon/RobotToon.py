@@ -222,6 +222,11 @@ class RobotToon(Toon.Toon, RobotAvatarBase):
                 self.setLOD(int(lod), switchIn + 10, switchIn)
                 switchIn += 10
 
+    def setAnimState(self, state):
+        RobotAvatarBase.setAnimState(self, state)
+        if hasattr(self, 'suit'):
+            self.suit.loop(state)
+
 class RobotSuit(Suit.Suit, RobotAvatarBase):
     # Default is flippy
     def __init__(self, description = None, parent = render,

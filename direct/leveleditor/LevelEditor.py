@@ -45,7 +45,7 @@ base.startDirect(fWantDirect = 1, fWantTk = 1)
 
 visualizeZones = base.config.GetBool("visualize-zones", 0)
 dnaDirectory = Filename.expandFrom(base.config.GetString("dna-directory", "$TTMODELS/src/dna"))
-fUseCVS = base.config.GetBool("level-editor-use-cvs", 1)
+fUseCVS = base.config.GetBool("level-editor-use-cvs", 0)
 useSnowTree = base.config.GetBool("use-snow-tree", 0)
 
 # Colors used by all color menus
@@ -755,7 +755,10 @@ class LevelEditor(NodePath, DirectObject):
         self.switchToDriveMode(None)
         self.fDrive = True
         #[gjeon] deselect
-        base.direct.selected.deselect(base.direct.selected.last)
+        try:
+            base.direct.selected.deselect(base.direct.selected.last)
+        except AttributeError:
+            pass
 
     def switchToDriveMode(self, state):
         """ Disable direct camera manipulation and enable player drive mode """
